@@ -47,5 +47,11 @@ elif [[ $retval -ne 5 ]]; then
 fi
 
 # Cleanup
-rm testfile
+#rm testfile
 
+### Function writePayloadOnXLine() should
+### append given text after 5th lane
+
+# Setup
+#
+writePayloadOnXLine testfile 3

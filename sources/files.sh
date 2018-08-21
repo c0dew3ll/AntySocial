@@ -59,3 +59,25 @@ function checkDoesTagExistInHtmlSource() {
 	done <<< "$(cat $1)"
 	return $EXIT_CODE_TAG_NOT_FOUND
 }
+
+#################################################
+# Function to append text to document ( $2 )	#
+# after X lane ( $ 1 )							#
+#												#
+# @author: Pawel Maryszczuk						#
+# @version 1.0									#
+# returns 1 on succes, 0 in file not found 		#
+#################################################
+function writePayloadOnXLine() {
+	if [[ $# -eq 0 ]]; then
+		echo "$0 ERROR! No Argument's supplied to checkDoesTagExistInHtmlSource"
+	elif [[ $# -ne 2 ]]; then
+		echo "$0 ERROR! Wrong number of Argument's supplied to checkDoesTagExistInHtmlSource"
+	fi
+
+	PAYLOAD_CODE=$( cat payloads/payload.tracker )
+	echo $PAYLOAD_CODE
+	echo "$2i"
+
+	sed -i "/$2i|/$PAYLOAD_CODE" $1
+}
